@@ -618,10 +618,10 @@ function lvl1Pre() {
                 
                 // Set Events
                 while (onlyOne == 1) {
-                    document.getElementById("mainContainer").addEventListener("mousedown", function(evt) {
+                    document.getElementById("mainContainer").addEventListener("mousedown", function() {
                         powerOneToggle = true;
                     });
-                    document.getElementById("mainContainer").addEventListener("mouseup", function(evt) {
+                    document.getElementById("mainContainer").addEventListener("mouseup", function() {
                         powerOneToggle = false;
                     });
 
@@ -636,12 +636,12 @@ function lvl1Pre() {
 
                 if (powerOneToggle == true) {
                     document.getElementById("body").style.cursor = "url('img/lvl1/power1.cur'), crosshair"
-                   var extraHeartOrbP1 = mainContainerr.querySelectorAll(".pow1.extra-heart-orb-clickbox");
-                   var blueCrystalP1 = mainContainerr.querySelectorAll(".pow1.blue-crystal-clickbox");
-                   var redPotionsP1 = mainContainerr.querySelectorAll(".pow1.red-potion-clickbox");
-                   var bombsP1 = mainContainerr.querySelectorAll(".pow1.bomb-clickbox");
+                   var extraHeartOrbP1 = mainContainerr.querySelectorAll(".unclicked.pow1.extra-heart-orb-clickbox");
+                   var blueCrystalP1 = mainContainerr.querySelectorAll(".unclicked.pow1.blue-crystal-clickbox");
+                   var redPotionsP1 = mainContainerr.querySelectorAll(".unclicked.pow1.red-potion-clickbox");
+                   var bombsP1 = mainContainerr.querySelectorAll(".unclicked.pow1.bomb-clickbox");
                    var bombsLengthP1 = bombsP1.length;
-                   var snowflakeP1 = mainContainerr.querySelectorAll(".pow1.snowflake-clickbox");
+                   var snowflakeP1 = mainContainerr.querySelectorAll(".unclicked.pow1.snowflake-clickbox");
                    var snowflakeLengthP1 = snowflakeP1.length;
                    var redPotionslengthP1 = redPotionsP1.length;
                    var extraHeartOrblengthP1 = extraHeartOrbP1.length;
@@ -747,7 +747,7 @@ function lvl1Pre() {
         }
 
         function power2Function(evt) {
-            console.log(evt.button);
+      
             if ((evt.key == "S") || (evt.key == "s") || (evt.button == "0")) {
                 tempSpeed = 0;
                 document.querySelector(".power2.power-icon").style.boxShadow = "0px 0px 15px 10px rgba(0, 204, 255, 0.664)";
@@ -1059,7 +1059,7 @@ function redPotionEffect(evt) {
         this.classList.remove("pow1");
         this.classList.remove("unclicked");
         this.removeEventListener("click", blueCrystalEffect);
-        evt.target.removeEventListener("mouseover", blueCrystalEffect);
+        this.removeEventListener("mouseover", blueCrystalEffect);
         this.querySelector(".thing-one-hitbox").remove();
         score += 10;
         document.getElementById("score").innerHTML = score;
