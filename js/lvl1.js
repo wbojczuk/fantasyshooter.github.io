@@ -961,7 +961,9 @@ function bombClicked(evt) {
     var nowLeft = this.style.getPropertyValue("left");
     var calcLeft = parseInt(nowLeft) - 1;
     this.style.left = calcLeft + "vw";
-    
+    setTimeout(() => {
+        this.remove();
+    }, 400);
     targetElement.style.background = "url('img/lvl1/bomb_explosion_sprite.png')" ;
     targetElement.style.animation = "bomb_explosion 400ms steps(8)";
     targetElement.style.backgroundSize= "800% 100%";
@@ -970,9 +972,7 @@ function bombClicked(evt) {
     document.getElementById("score").innerHTML = score;
     
 
-    setTimeout(() => {
-        this.remove();
-    }, 390);
+    
 }
 
 
@@ -996,7 +996,9 @@ function redPotionEffect(evt) {
         audio.volume = 0.4;
         audio.playbackRate = 1;
         audio.play();
-        
+        setTimeout(() => {
+            this.remove();
+        }, 480);
         targetElement.style.background = "url('img/red_splash_sprite.png')" ;
         targetElement.style.animation = "red_splash 480ms steps(24)";
         targetElement.style.backgroundSize= "2400% 100%";
@@ -1011,14 +1013,15 @@ function redPotionEffect(evt) {
         audio.volume = 0.2;
         audio.playbackRate = 1;
         audio.play();
+        setTimeout(() => {
+            this.remove();
+        }, 480);
         targetElement.style.background = "url('img/red_splash_sprite.png')" ;
         targetElement.style.animation = "red_splash 480ms steps(24)";
         targetElement.style.backgroundSize= "2400% 100%";
 }
 
-    setTimeout(() => {
-        this.remove();
-    }, 480);
+    
 }
 
 
@@ -1040,7 +1043,9 @@ function redPotionEffect(evt) {
         audio.play();
         targetElement.style.height = "8vw";
         targetElement.style.width = "8vw";
-        
+        setTimeout(() => {
+            this.remove();
+        }, 470);
         targetElement.style.background = "url('img/extra_heart_orb_explosion_sprite.png')" ;
         targetElement.style.animation = "extra_heart_orb_explosion 480ms steps(19)";
         targetElement.style.backgroundSize= "1900% 8vw";
@@ -1049,9 +1054,7 @@ function redPotionEffect(evt) {
         var heartsHere = document.querySelectorAll(".heart-here");
         heartsHere[0].insertAdjacentHTML("beforebegin", "<div class='heart-img heart-here extra-heart' id='heartImage'></div>");
 
-        setTimeout(() => {
-            this.remove();
-        }, 470);
+        
     }
 
     function blueCrystalEffect(evt) {
@@ -1070,14 +1073,14 @@ function redPotionEffect(evt) {
         audio.play();
         targetElement.style.height = "8vw";
         targetElement.style.width = "8vw";
-
+        setTimeout(() => {
+            this.remove();
+        }, 300);
         targetElement.style.background = "url('img/blue_crystal_explosion_sprite.png')" ;
         targetElement.style.animation = "blue_crystal_explosion 300ms steps(15)";
         targetElement.style.backgroundSize= "1500% 8vw";
 
-        setTimeout(() => {
-            this.remove();
-        }, 300);
+       
     }
 
 
@@ -1098,7 +1101,9 @@ function snowflakeEffect(evt) {
         audio.play();
         targetElement.style.height = "5.6vw";
         targetElement.style.width = "4.5vw";
-        
+        setTimeout(() => {
+            this.remove();
+        }, 300);
         targetElement.style.background = "url('img/snowflake_explosion_sprite.png')" ;
         targetElement.style.animation = "snowflake_explosion 300ms steps(16)";
         targetElement.style.backgroundSize= "1600% 5.6vw";
@@ -1118,9 +1123,7 @@ function snowflakeEffect(evt) {
         window.addEventListener("keydown", power2Function);
 
 
-        setTimeout(() => {
-            this.remove();
-        }, 300);
+        
 }
 
     
