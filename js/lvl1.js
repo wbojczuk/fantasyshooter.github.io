@@ -738,7 +738,7 @@ function lvl1Pre() {
                 }
 
                 for (let i = 0; i < purplePotionsLengthP1; i++) {
-                    purplePotions[i].addEventListener("mouseover", bombClicked);
+                    purplePotions[i].addEventListener("mouseover", purplePotionEffect);
                     purplePotions[i].classList.remove("pow1");
                     
                 }
