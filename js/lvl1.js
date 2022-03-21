@@ -13,6 +13,7 @@ var purplePotionNode;
 var extraHeartOrbNode;
 var blueCrystalNode;
 var snowflakeNode;
+var power1Timeout;
 
 
 
@@ -643,10 +644,13 @@ function lvl1Pre() {
                 
                 // Set Events
                 while (onlyOne == 1) {
-                    document.getElementById("mainContainer").addEventListener("mousedown", function() {
-                        powerOneToggle = true;
+                    document.addEventListener("mousedown", function() {
+                        clearTimeout(power1Timeout);
+                        
+                        power1Timeout = setTimeout(function(){powerOneToggle = true;}, 100);
                     });
-                    document.getElementById("mainContainer").addEventListener("mouseup", function() {
+                    document.addEventListener("mouseup", function() {
+                        clearTimeout(power1Timeout);
                         powerOneToggle = false;
                     });
 
@@ -738,8 +742,8 @@ function lvl1Pre() {
                 }
 
                 for (let i = 0; i < purplePotionsLengthP1; i++) {
-                    purplePotions[i].addEventListener("mouseover", purplePotionEffect);
-                    purplePotions[i].classList.remove("pow1");
+                    purplePotionsP1[i].removeEventListener("mouseover", purplePotionEffect);
+                    purplePotionsP1[i].classList.add("pow1");
                     
                 }
 
@@ -769,12 +773,15 @@ function lvl1Pre() {
             }
             if (power1On == 2) {
                 while (onlyOne1 == 1){
-                document.getElementById("mainContainer").removeEventListener("mousedown", function(evt) {
-                    powerOneToggle = true;
-                });
-                document.getElementById("mainContainer").removeEventListener("mouseup", function(evt) {
-                    powerOneToggle = false;
-                });
+                    document.removeEventListener("mousedown", function() {
+                        clearTimeout(power1Timeout);
+                        
+                        power1Timeout = setTimeout(function(){powerOneToggle = true;}, 100);
+                    });
+                    document.removeEventListener("mouseup", function() {
+                        clearTimeout(power1Timeout);
+                        powerOneToggle = false;
+                    });
                 document.querySelector(".power1").remove();
                 onlyOne1 += 1;
             }
