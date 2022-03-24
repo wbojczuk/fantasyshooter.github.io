@@ -178,12 +178,11 @@ function lvl1Pre() {
                 } 
                 if (counter % 5 == 0) {   
                     nodeContainer.appendChild(thingOneNode.cloneNode(true)); 
-                    nodeContainer.appendChild(purplePotionNode.cloneNode(true));
+                    
                     
                 } 
                 
                 if (counter % 7 == 0) {   
-                    nodeContainer.appendChild(thingOneNode.cloneNode(true));
                     nodeContainer.appendChild(thingOneNode.cloneNode(true));
                 } 
                 if (counter % 13 == 0) {
@@ -218,7 +217,9 @@ function lvl1Pre() {
             }
 
             // RED POTION GENERATION
-
+            if ( counter == Math.floor(getRndInteger(15 , 20))) {
+                nodeContainer.appendChild(redPotionNode.cloneNode(true));
+            }
 
             if ( counter == Math.floor(getRndInteger(20 , 30))) {
                 nodeContainer.appendChild(redPotionNode.cloneNode(true));
@@ -234,6 +235,23 @@ function lvl1Pre() {
              if ( counter == Math.floor(getRndInteger(100 , 120)) ) {
                 nodeContainer.appendChild(redPotionNode.cloneNode(true));
              }
+
+            //  PURPLE POTION GENERATION
+            if ( counter == Math.floor(getRndInteger(20 , 30))) {
+                nodeContainer.appendChild(purplePotionNode.cloneNode(true));
+            }
+
+            if ( counter == Math.floor(getRndInteger(30 , 40))) {
+                nodeContainer.appendChild(purplePotionNode.cloneNode(true));
+             }
+
+             if ( counter == Math.floor(getRndInteger(60 , 70)) ) {
+                nodeContainer.appendChild(purplePotionNode.cloneNode(true));
+             }
+             if ( counter == Math.floor(getRndInteger(100 , 120)) ) {
+                nodeContainer.appendChild(purplePotionNode.cloneNode(true));
+             }
+
 
 
                 // APPLY INDIVIDUAL PROPERTIES TO NODES
@@ -350,13 +368,13 @@ function lvl1Pre() {
                     moveItemsRepeat = setInterval(moveItems, 5); 
                 }
     
-                if (counter == 60) {
+                if (counter == 70) {
                     currentTime = 5; 
                     clearInterval(moveItemsRepeat);
                     moveItemsRepeat = setInterval(moveItems, 5); 
                 }
     
-                if (counter == 75) {
+                if (counter == 85) {
                     currentTime = 6; 
                     clearInterval(moveItemsRepeat);
                     moveItemsRepeat = setInterval(moveItems, 5);
@@ -526,88 +544,172 @@ function lvl1Pre() {
 
             // Test if cell hitbox is in viewport
 
-            function testViewport(){
+function testViewport(){
 
-            allThingOneHitbox = document.querySelectorAll(".thing-one-hitbox");
-            allThingOneLengthHitbox = allThingOneHitbox.length;
+    allThingOneHitbox = document.querySelectorAll(".thing-one-hitbox");
+    allThingOneLengthHitbox = allThingOneHitbox.length;
 
-            for (let i = 0; i < allThingOneLengthHitbox; i++) {
+    for (let i = 0; i < allThingOneLengthHitbox; i++) {
 
-                if (isInViewport(allThingOneHitbox[i]) === false ) {
+        if (isInViewport(allThingOneHitbox[i]) === false ) {
 
-                    var hearts = document.querySelectorAll(".heart-img");
-                    hearts[heartLost].style.backgroundImage = "url('img/heart1.png')";
-                    hearts[heartLost].classList.add("heart-gone");
-                    hearts[heartLost].classList.remove("heart-here");
-                var audio = new Audio('sounds/lose_heart.mp3');
-                audio.volume = 0.2;
-                audio.playbackRate = 1;
-                audio.play();
-
-                    heartLost += 1;
-
-                    allThingOneHitbox[i].remove();
-
-                    // FAILLLLL
+            var hearts = document.querySelectorAll(".heart-img");
             
-
-                    
-                        if (heartLost == hearts.length) {
-                            // SET lvl 1 HIGHSCORE
-                            if (parseInt(localStorage.getItem("FSlvl1HS")) < score) {
-                                localStorage.setItem("FSlvl1HS", score);
-                                localStorage.saveServer
-                            }
-
-                            document.getElementById("lvl1Highscore").textContent = localStorage.getItem("FSlvl1HS");
-                            failScreen();
-                            removePowers();
-                            resetVariables();
-                        }
-                    
-                }
-                
-
-            }
-            var viewTest = document.getElementById("mainContainer");
-            var viewSubject = viewTest.lastElementChild;
-
-            var fallingCount = document.querySelectorAll(".falling-container");
-            var fallingCountLength = fallingCount.length;
-
-           
-            for(let i = 0; i < fallingCountLength; i++){
-            if (isInViewport(viewSubject) === false) {
-  
-               viewSubject.remove();
-
-               viewSubject = viewTest.lastElementChild;
-
-            }
-        }
-
-            // WIN GAME
-            if (score >= 1500 && onlyOne111 == 1){
-                localStorage.setItem("FSlvl1Won", "true");
-                localStorage.setItem("FSlvl2Unlocked", "true");
-                localStorage.saveServer
-
-                document.getElementById("lvl2Slide").src = "img/lvl2/lvl2_background.jpg";
-                document.getElementById("lvl2Slide").style.backgroundImage = "none";
-
-                onlyOne111 += 1;
-                document.getElementById("lvlAlertText").textContent = "Level Won!";
-                document.getElementById("potionBar").style.display = "none";
-                document.getElementById("lvlAlertText").style.display = "inline-block";
-                document.getElementById("lvlAlertAnimation").style.display = "inline-block";
-
+            if (heartLost == 0){
+                hearts[0].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+                hearts[0].style.animation = "heart_explosion 300ms steps(16)";
+                hearts[0].style.backgroundSize = "1600% 100%";
                 setTimeout(function(){
-                    document.getElementById("potionBar").style.display = "flex";
-                document.getElementById("lvlAlertText").style.display = "none";
-                document.getElementById("lvlAlertAnimation").style.display = "none";
-                }, 4000);
+                    hearts[0].style.animation = "";
+                    hearts[0].style.backgroundImage = "url('img/heart1.png')";
+                    hearts[0].style.backgroundSize = "4vw 4vw";
+                }, 290);
+            } else if (heartLost == 1){
+                hearts[1].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+                hearts[1].style.backgroundSize = "1600% 100%";
+                hearts[1].style.animation = "heart_explosion 300ms steps(16)";
+                setTimeout(function(){
+                    hearts[1].style.animation = "";
+                    hearts[1].style.backgroundImage = "url('img/heart1.png')";
+                    hearts[1].style.backgroundSize = "4vw 4vw";
+                }, 290);
+            }else if (heartLost == 2){
+                hearts[2].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+                hearts[2].style.backgroundSize = "1600% 100%";
+                hearts[2].style.animation = "heart_explosion 300ms steps(16)";
+                setTimeout(function(){
+                    hearts[2].style.animation = "";
+                    hearts[2].style.backgroundImage = "url('img/heart1.png')";
+                    hearts[2].style.backgroundSize = "4vw 4vw";
+                }, 290);
+            }else if (heartLost == 3){
+                hearts[3].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+                hearts[3].style.backgroundSize = "1600% 100%";
+                hearts[3].style.animation = "heart_explosion 300ms steps(16)";
+                setTimeout(function(){
+                    hearts[3].style.animation = "";
+                    hearts[3].style.backgroundImage = "url('img/heart1.png')";
+                    hearts[3].style.backgroundSize = "4vw 4vw";
+                }, 290);
+            }else if (heartLost == 4){
+                hearts[4].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+                hearts[4].style.backgroundSize = "1600% 100%";
+                hearts[4].style.animation = "heart_explosion 300ms steps(16)";
+                setTimeout(function(){
+                    hearts[4].style.animation = "";
+                    hearts[4].style.backgroundImage = "url('img/heart1.png')";
+                    hearts[4].style.backgroundSize = "4vw 4vw";
+                }, 290);
+            }else if (heartLost == 5){
+                hearts[5].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+                hearts[5].style.backgroundSize = "1600% 100%";
+                hearts[5].style.animation = "heart_explosion 300ms steps(16)";
+                setTimeout(function(){
+                    hearts[5].style.animation = "";
+                    hearts[5].style.backgroundImage = "url('img/heart1.png')";
+                    hearts[5].style.backgroundSize = "4vw 4vw";
+                }, 290);
+            }else if (heartLost == 6){
+                hearts[6].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+                hearts[6].style.backgroundSize = "1600% 100%";
+                hearts[6].style.animation = "heart_explosion 300ms steps(16)";
+                setTimeout(function(){
+                    hearts[6].style.animation = "";
+                    hearts[6].style.backgroundImage = "url('img/heart1.png')";
+                    hearts[6].style.backgroundSize = "4vw 4vw";
+                }, 290);
+            }else if (heartLost == 7){
+                hearts[7].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+                hearts[7].style.backgroundSize = "1600% 100%";
+                hearts[7].style.animation = "heart_explosion 300ms steps(16)";
+                setTimeout(function(){
+                    hearts[7].style.animation = "";
+                    hearts[7].style.backgroundImage = "url('img/heart1.png')";
+                    hearts[7].style.backgroundSize = "4vw 4vw";
+                }, 290);
+            }else if (heartLost == 8){
+                hearts[8].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+                hearts[8].style.backgroundSize = "1600% 100%";
+                hearts[8].style.animation = "heart_explosion 300ms steps(16)";
+                setTimeout(function(){
+                    hearts[8].style.animation = "";
+                    hearts[8].style.backgroundImage = "url('img/heart1.png')";
+                    hearts[8].style.backgroundSize = "4vw 4vw";
+                }, 290);
             }
+            hearts[heartLost].classList.add("heart-gone");
+            hearts[heartLost].classList.remove("heart-here");
+            
+            
+        var audio = new Audio('sounds/lose_heart.mp3');
+        audio.volume = 0.2;
+        audio.playbackRate = 1;
+        audio.play();
+
+            heartLost += 1;
+
+            allThingOneHitbox[i].remove();
+
+            // FAILLLLL
+    
+
+            
+                if (heartLost == hearts.length) {
+                    // SET lvl 1 HIGHSCORE
+                    if (parseInt(localStorage.getItem("FSlvl1HS")) < score) {
+                        localStorage.setItem("FSlvl1HS", score);
+                        localStorage.saveServer
+                    }
+
+                    document.getElementById("lvl1Highscore").textContent = localStorage.getItem("FSlvl1HS");
+                    failScreen();
+                    removePowers();
+                    resetVariables();
+                }
+            
+        }
+        
+
     }
+    var viewTest = document.getElementById("mainContainer");
+    var viewSubject = viewTest.lastElementChild;
+
+    var fallingCount = document.querySelectorAll(".falling-container");
+    var fallingCountLength = fallingCount.length;
+
+   
+    for(let i = 0; i < fallingCountLength; i++){
+    if (isInViewport(viewSubject) === false) {
+
+       viewSubject.remove();
+
+       viewSubject = viewTest.lastElementChild;
+
+    }
+}
+
+    // WIN GAME
+    if (score >= 1300 && onlyOne111 == 1){
+        localStorage.setItem("FSlvl1Won", "true");
+        localStorage.setItem("FSlvl2Unlocked", "true");
+        localStorage.saveServer
+
+        document.getElementById("lvl2Slide").src = "img/lvl2/lvl2_background.jpg";
+        document.getElementById("lvl2Slide").style.backgroundImage = "none";
+
+        onlyOne111 += 1;
+        document.getElementById("lvlAlertText").textContent = "Level Won!";
+        document.getElementById("potionBar").style.display = "none";
+        document.getElementById("lvlAlertText").style.display = "inline-block";
+        document.getElementById("lvlAlertAnimation").style.display = "inline-block";
+
+        setTimeout(function(){
+            document.getElementById("potionBar").style.display = "flex";
+        document.getElementById("lvlAlertText").style.display = "none";
+        document.getElementById("lvlAlertAnimation").style.display = "none";
+        }, 4000);
+    }
+}
 
             // Test if falling-container is in viewport
 
@@ -1049,7 +1151,91 @@ function redPotionEffect(evt) {
         targetElement.style.animation = "red_splash 480ms steps(24)";
         targetElement.style.backgroundSize= "2400% 100%";
         var targetHeart = goneHeartState.length - 1;
-        goneHeartState[targetHeart].style.backgroundImage = "url('img/heart.png')";
+        var hearts = document.querySelectorAll(".heart-img");
+        if (heartLost == 1){
+            hearts[0].style.backgroundImage = "url('img/heart_heal_sprite.png')";
+            hearts[0].style.animation = "heart_heal 300ms steps(25)";
+            hearts[0].style.backgroundSize = "2500% 100%";
+            setTimeout(function(){
+                hearts[0].style.animation = "";
+                hearts[0].style.backgroundImage = "url('img/heart.png')";
+                hearts[0].style.backgroundSize = "4vw 4vw";
+            }, 290);
+        } else if (heartLost == 2){
+            hearts[1].style.backgroundImage = "url('img/heart_heal_sprite.png')";
+            hearts[1].style.animation = "heart_heal 300ms steps(25)";
+            hearts[1].style.backgroundSize = "2500% 100%";
+            setTimeout(function(){
+                hearts[1].style.animation = "";
+                hearts[1].style.backgroundImage = "url('img/heart.png')";
+                hearts[1].style.backgroundSize = "4vw 4vw";
+            }, 290);
+        }else if (heartLost == 3){
+            hearts[2].style.backgroundImage = "url('img/heart_heal_sprite.png')";
+            hearts[2].style.animation = "heart_heal 300ms steps(25)";
+            hearts[2].style.backgroundSize = "2500% 100%";
+            setTimeout(function(){
+                hearts[2].style.animation = "";
+                hearts[2].style.backgroundImage = "url('img/heart.png')";
+                hearts[2].style.backgroundSize = "4vw 4vw";
+            }, 290);
+        }else if (heartLost == 4){
+            hearts[3].style.backgroundImage = "url('img/heart_heal_sprite.png')";
+            hearts[3].style.animation = "heart_heal 300ms steps(25)";
+            hearts[3].style.backgroundSize = "2500% 100%";
+            setTimeout(function(){
+                hearts[3].style.animation = "";
+                hearts[3].style.backgroundImage = "url('img/heart.png')";
+                hearts[3].style.backgroundSize = "4vw 4vw";
+            }, 290);
+        }else if (heartLost == 5){
+            hearts[4].style.backgroundImage = "url('img/heart_heal_sprite.png')";
+            hearts[4].style.animation = "heart_heal 300ms steps(25)";
+            hearts[4].style.backgroundSize = "2500% 100%";
+            setTimeout(function(){
+                hearts[4].style.animation = "";
+                hearts[4].style.backgroundImage = "url('img/heart.png')";
+                hearts[4].style.backgroundSize = "4vw 4vw";
+            }, 290);
+        }else if (heartLost == 6){
+            hearts[5].style.backgroundImage = "url('img/heart_heal_sprite.png')";
+            hearts[5].style.animation = "heart_heal 300ms steps(25)";
+            hearts[5].style.backgroundSize = "2500% 100%";
+            setTimeout(function(){
+                hearts[5].style.animation = "";
+                hearts[5].style.backgroundImage = "url('img/heart.png')";
+                hearts[5].style.backgroundSize = "4vw 4vw";
+            }, 290);
+        }else if (heartLost == 7){
+            hearts[6].style.backgroundImage = "url('img/heart_heal_sprite.png')";
+            hearts[6].style.animation = "heart_heal 300ms steps(25)";
+            hearts[6].style.backgroundSize = "2500% 100%";
+            setTimeout(function(){
+                hearts[6].style.animation = "";
+                hearts[6].style.backgroundImage = "url('img/heart.png')";
+                hearts[6].style.backgroundSize = "4vw 4vw";
+            }, 290);
+        }else if (heartLost == 8){
+            hearts[7].style.backgroundImage = "url('img/heart_heal_sprite.png')";
+            hearts[7].style.animation = "heart_heal 300ms steps(25)";
+            hearts[7].style.backgroundSize = "2500% 100%";
+            setTimeout(function(){
+                hearts[7].style.animation = "";
+                hearts[7].style.backgroundImage = "url('img/heart.png')";
+                hearts[7].style.backgroundSize = "4vw 4vw";
+            }, 290);
+        }else if (heartLost == 9){
+            hearts[8].style.backgroundImage = "url('img/heart_heal_sprite.png')";
+            hearts[8].style.animation = "heart_heal 300ms steps(25)";
+            hearts[8].style.backgroundSize = "2500% 100%";
+            setTimeout(function(){
+                hearts[8].style.animation = "";
+                hearts[8].style.backgroundImage = "url('img/heart.png')";
+                hearts[8].style.backgroundSize = "4vw 4vw";
+            }, 290);
+        }
+
+    
         goneHeartState[targetHeart].classList.remove("heart-gone");
         goneHeartState[targetHeart].classList.add("heart-here");
         heartLost -= 1;
@@ -1192,7 +1378,88 @@ function purplePotionEffect(evt) {
     document.getElementById("score").innerHTML = score;
 
     var hearts = document.querySelectorAll(".heart-img");
-                    hearts[heartLost].style.backgroundImage = "url('img/heart1.png')";
+    if (heartLost == 0){
+        hearts[0].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+        hearts[0].style.animation = "heart_explosion 300ms steps(16)";
+        hearts[0].style.backgroundSize = "1600% 100%";
+        setTimeout(function(){
+            hearts[0].style.animation = "";
+            hearts[0].style.backgroundImage = "url('img/heart1.png')";
+            hearts[0].style.backgroundSize = "4vw 4vw";
+        }, 290);
+    } else if (heartLost == 1){
+        hearts[1].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+        hearts[1].style.backgroundSize = "1600% 100%";
+        hearts[1].style.animation = "heart_explosion 300ms steps(16)";
+        setTimeout(function(){
+            hearts[1].style.animation = "";
+            hearts[1].style.backgroundImage = "url('img/heart1.png')";
+            hearts[1].style.backgroundSize = "4vw 4vw";
+        }, 290);
+    }else if (heartLost == 2){
+        hearts[2].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+        hearts[2].style.backgroundSize = "1600% 100%";
+        hearts[2].style.animation = "heart_explosion 300ms steps(16)";
+        setTimeout(function(){
+            hearts[2].style.animation = "";
+            hearts[2].style.backgroundImage = "url('img/heart1.png')";
+            hearts[2].style.backgroundSize = "4vw 4vw";
+        }, 290);
+    }else if (heartLost == 3){
+        hearts[3].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+        hearts[3].style.backgroundSize = "1600% 100%";
+        hearts[3].style.animation = "heart_explosion 300ms steps(16)";
+        setTimeout(function(){
+            hearts[3].style.animation = "";
+            hearts[3].style.backgroundImage = "url('img/heart1.png')";
+            hearts[3].style.backgroundSize = "4vw 4vw";
+        }, 290);
+    }else if (heartLost == 4){
+        hearts[4].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+        hearts[4].style.backgroundSize = "1600% 100%";
+        hearts[4].style.animation = "heart_explosion 300ms steps(16)";
+        setTimeout(function(){
+            hearts[4].style.animation = "";
+            hearts[4].style.backgroundImage = "url('img/heart1.png')";
+            hearts[4].style.backgroundSize = "4vw 4vw";
+        }, 290);
+    }else if (heartLost == 5){
+        hearts[5].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+        hearts[5].style.backgroundSize = "1600% 100%";
+        hearts[5].style.animation = "heart_explosion 300ms steps(16)";
+        setTimeout(function(){
+            hearts[5].style.animation = "";
+            hearts[5].style.backgroundImage = "url('img/heart1.png')";
+            hearts[5].style.backgroundSize = "4vw 4vw";
+        }, 290);
+    }else if (heartLost == 6){
+        hearts[6].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+        hearts[6].style.backgroundSize = "1600% 100%";
+        hearts[6].style.animation = "heart_explosion 300ms steps(16)";
+        setTimeout(function(){
+            hearts[6].style.animation = "";
+            hearts[6].style.backgroundImage = "url('img/heart1.png')";
+            hearts[6].style.backgroundSize = "4vw 4vw";
+        }, 290);
+    }else if (heartLost == 7){
+        hearts[7].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+        hearts[7].style.backgroundSize = "1600% 100%";
+        hearts[7].style.animation = "heart_explosion 300ms steps(16)";
+        setTimeout(function(){
+            hearts[7].style.animation = "";
+            hearts[7].style.backgroundImage = "url('img/heart1.png')";
+            hearts[7].style.backgroundSize = "4vw 4vw";
+        }, 290);
+    }else if (heartLost == 8){
+        hearts[8].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
+        hearts[8].style.backgroundSize = "1600% 100%";
+        hearts[8].style.animation = "heart_explosion 300ms steps(16)";
+        setTimeout(function(){
+            hearts[8].style.animation = "";
+            hearts[8].style.backgroundImage = "url('img/heart1.png')";
+            hearts[8].style.backgroundSize = "4vw 4vw";
+        }, 290);
+    }
                     hearts[heartLost].classList.add("heart-gone");
                     hearts[heartLost].classList.remove("heart-here");
                 var audio = new Audio('sounds/lose_heart.mp3');
@@ -1224,5 +1491,3 @@ function purplePotionEffect(evt) {
         this.remove();
     }, 290);
 }
-
-    
