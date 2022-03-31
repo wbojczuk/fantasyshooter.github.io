@@ -1,12 +1,7 @@
-var oonlyOne = 1;
-var mainContainerr = document.getElementById("mainContainer");
-var onlyOne = 1;
-var onlyOne1 = 1;
-var onlyOne111 = 1;
+
 var powerOneToggle = false; 
 var power1On = 0;
-var allThingOneHitbox;
-var allThingOneLengthHitbox;
+
 var thingOneNode;
 var redPotionNode;
 var purplePotionNode;
@@ -14,6 +9,11 @@ var extraHeartOrbNode;
 var blueCrystalNode;
 var snowflakeNode;
 var power1Timeout;
+var lvl1generationRepeat;
+var lvl1testViewportRepeat;
+var lvl1power1Repeat;
+var lvl1checkPowersRepeat;
+var lvl1moveItemsRepeat;
 
 
 
@@ -150,10 +150,10 @@ function lvl1Pre() {
 
 
                 
-                 testViewportRepeat = setInterval(testViewport, 10);
-                 checkPowersrepeat = setInterval(checkPowers, 100);
-                 moveItemsRepeat = setInterval(moveItems, 10);
-                 generationRepeat = setInterval(lvlOneGeneration, 1000);
+                 lvl1testViewportRepeat = setInterval(lvl1testViewport, 10);
+                 lvl1checkPowersrepeat = setInterval(lvl1checkPowers, 100);
+                 lvl1moveItemsRepeat = setInterval(lvl1moveItems, 10);
+                 lvl1generationRepeat = setInterval(lvl1Generation, 1000);
 
 
     
@@ -163,7 +163,7 @@ function lvl1Pre() {
         
 }
         // Main Function
-            function lvlOneGeneration(){
+            function lvl1Generation(){
                 var nodeContainer = document.createElement("div");
 
 
@@ -352,60 +352,60 @@ function lvl1Pre() {
     
                 if (counter == 15) {
                     currentTime = 2;
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 9); 
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 9); 
                 }
     
                 if (counter == 25) {
                     currentTime = 3;
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 7); 
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 7); 
                 }
     
                 if (counter == 50) {
                     currentTime = 4; 
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 5); 
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 5); 
                 }
     
                 if (counter == 70) {
                     currentTime = 5; 
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 5); 
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 5); 
                 }
     
                 if (counter == 85) {
                     currentTime = 6; 
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 5);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 5);
                 }
                 if (counter == 100) {
                     currentTime = 7; 
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 5);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 5);
                 }
     
                 if (counter == 120) {
                     currentTime = 8; 
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 3);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 3);
                 }
     
                 if (counter == 140) {
                     currentTime = 9; 
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 2);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 2);
                 }
                 if (counter == 160) {
                     currentTime = 10; 
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 1);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 1);
                 }
 
                 if (counter == 180) {
                     currentTime = 11; 
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 1);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 1);
                 }
     
                 // TEMP DISABLE COUNTER TRIGGERS
@@ -420,7 +420,7 @@ function lvl1Pre() {
 
 
                 // MOVE FALLING CONTAINERS
-               function moveItems() {
+               function lvl1moveItems() {
                   
                    var fallingContainerss = document.querySelectorAll(".falling-container");
                    var fallingContainersLengths = fallingContainerss.length;
@@ -544,7 +544,7 @@ function lvl1Pre() {
 
             // Test if cell hitbox is in viewport
 
-function testViewport(){
+function lvl1testViewport(){
 
     allThingOneHitbox = document.querySelectorAll(".thing-one-hitbox");
     allThingOneLengthHitbox = allThingOneHitbox.length;
@@ -557,8 +557,8 @@ function testViewport(){
             
             if (heartLost == 0){
                 hearts[0].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-                hearts[0].style.animation = "heart_explosion 300ms steps(16)";
-                hearts[0].style.backgroundSize = "1600% 100%";
+                hearts[0].style.animation = "heart_explosion 300ms steps(22)";
+                hearts[0].style.backgroundSize = "2200% 100%";
                 setTimeout(function(){
                     hearts[0].style.animation = "";
                     hearts[0].style.backgroundImage = "url('img/heart1.png')";
@@ -566,8 +566,8 @@ function testViewport(){
                 }, 290);
             } else if (heartLost == 1){
                 hearts[1].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-                hearts[1].style.backgroundSize = "1600% 100%";
-                hearts[1].style.animation = "heart_explosion 300ms steps(16)";
+                hearts[1].style.backgroundSize = "2200% 100%";
+                hearts[1].style.animation = "heart_explosion 300ms steps(22)";
                 setTimeout(function(){
                     hearts[1].style.animation = "";
                     hearts[1].style.backgroundImage = "url('img/heart1.png')";
@@ -575,8 +575,8 @@ function testViewport(){
                 }, 290);
             }else if (heartLost == 2){
                 hearts[2].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-                hearts[2].style.backgroundSize = "1600% 100%";
-                hearts[2].style.animation = "heart_explosion 300ms steps(16)";
+                hearts[2].style.backgroundSize = "2200% 100%";
+                hearts[2].style.animation = "heart_explosion 300ms steps(22)";
                 setTimeout(function(){
                     hearts[2].style.animation = "";
                     hearts[2].style.backgroundImage = "url('img/heart1.png')";
@@ -584,8 +584,8 @@ function testViewport(){
                 }, 290);
             }else if (heartLost == 3){
                 hearts[3].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-                hearts[3].style.backgroundSize = "1600% 100%";
-                hearts[3].style.animation = "heart_explosion 300ms steps(16)";
+                hearts[3].style.backgroundSize = "2200% 100%";
+                hearts[3].style.animation = "heart_explosion 300ms steps(22)";
                 setTimeout(function(){
                     hearts[3].style.animation = "";
                     hearts[3].style.backgroundImage = "url('img/heart1.png')";
@@ -593,8 +593,8 @@ function testViewport(){
                 }, 290);
             }else if (heartLost == 4){
                 hearts[4].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-                hearts[4].style.backgroundSize = "1600% 100%";
-                hearts[4].style.animation = "heart_explosion 300ms steps(16)";
+                hearts[4].style.backgroundSize = "2200% 100%";
+                hearts[4].style.animation = "heart_explosion 300ms steps(22)";
                 setTimeout(function(){
                     hearts[4].style.animation = "";
                     hearts[4].style.backgroundImage = "url('img/heart1.png')";
@@ -602,8 +602,8 @@ function testViewport(){
                 }, 290);
             }else if (heartLost == 5){
                 hearts[5].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-                hearts[5].style.backgroundSize = "1600% 100%";
-                hearts[5].style.animation = "heart_explosion 300ms steps(16)";
+                hearts[5].style.backgroundSize = "2200% 100%";
+                hearts[5].style.animation = "heart_explosion 300ms steps(22)";
                 setTimeout(function(){
                     hearts[5].style.animation = "";
                     hearts[5].style.backgroundImage = "url('img/heart1.png')";
@@ -611,8 +611,8 @@ function testViewport(){
                 }, 290);
             }else if (heartLost == 6){
                 hearts[6].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-                hearts[6].style.backgroundSize = "1600% 100%";
-                hearts[6].style.animation = "heart_explosion 300ms steps(16)";
+                hearts[6].style.backgroundSize = "2200% 100%";
+                hearts[6].style.animation = "heart_explosion 300ms steps(22)";
                 setTimeout(function(){
                     hearts[6].style.animation = "";
                     hearts[6].style.backgroundImage = "url('img/heart1.png')";
@@ -620,8 +620,8 @@ function testViewport(){
                 }, 290);
             }else if (heartLost == 7){
                 hearts[7].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-                hearts[7].style.backgroundSize = "1600% 100%";
-                hearts[7].style.animation = "heart_explosion 300ms steps(16)";
+                hearts[7].style.backgroundSize = "2200% 100%";
+                hearts[7].style.animation = "heart_explosion 300ms steps(22)";
                 setTimeout(function(){
                     hearts[7].style.animation = "";
                     hearts[7].style.backgroundImage = "url('img/heart1.png')";
@@ -629,8 +629,8 @@ function testViewport(){
                 }, 290);
             }else if (heartLost == 8){
                 hearts[8].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-                hearts[8].style.backgroundSize = "1600% 100%";
-                hearts[8].style.animation = "heart_explosion 300ms steps(16)";
+                hearts[8].style.backgroundSize = "2200% 100%";
+                hearts[8].style.animation = "heart_explosion 300ms steps(22)";
                 setTimeout(function(){
                     hearts[8].style.animation = "";
                     hearts[8].style.backgroundImage = "url('img/heart1.png')";
@@ -694,8 +694,7 @@ function testViewport(){
         localStorage.setItem("FSlvl2Unlocked", "true");
         localStorage.saveServer
 
-        document.getElementById("lvl2Slide").src = "img/lvl2/lvl2_background.jpg";
-        document.getElementById("lvl2Slide").style.backgroundImage = "none";
+       
 
         onlyOne111 += 1;
         document.getElementById("lvlAlertText").textContent = "Level Won!";
@@ -721,9 +720,9 @@ function testViewport(){
 
             
             
-            function checkPowers() {
+            function lvl1checkPowers() {
                 if (score >= 500 && onlyOne11 == 1) {
-                    power1Repeat = setInterval(power1Function, 10);
+                    lvl1power1Repeat = setInterval(lvl1power1Function, 10);
                     onlyOne11 += 1;
                 }
             }
@@ -735,7 +734,7 @@ function testViewport(){
 
             // Add powers based on score
 
-            function power1Function() {
+            function lvl1power1Function() {
             // MOUSEOVER BOMBS AKA POWER1
             
                 power1On = 1;
@@ -896,15 +895,15 @@ function testViewport(){
             
         }
 
-        function power2Function(evt) {
+        function lvl1power2Function(evt) {
       
             if ((evt.key == "S") || (evt.key == "s") || (evt.button == "0")) {
                 tempSpeed = 0;
                 document.querySelector(".power2.power-icon").style.boxShadow = "0px 0px 15px 10px rgba(0, 204, 255, 0.664)";
-                window.removeEventListener("keydown", power2Function);
-                document.getElementById("power2Icon").removeEventListener("click", power2Function);
+                window.removeEventListener("keydown", lvl1power2Function);
+                document.getElementById("power2Icon").removeEventListener("click", lvl1power2Function);
                 var tempCounterr = counter;
-                clearInterval(generationRepeat);
+                clearInterval(lvl1generationRepeat);
 
                 var audio = new Audio('sounds/lvl1/ice_cracking.mp3');
                 audio.volume = 1;
@@ -915,101 +914,101 @@ function testViewport(){
                 document.getElementById("mainWrapper").style.backgroundSize = "100% 100%";
 
                 if (currentTime == 1) {
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 15);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 15);
                     tempSpeed = 1;
                 }
 
                 if (currentTime == 2) {
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 14);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 14);
                     tempSpeed = 2;
                 }
 
                 if (currentTime == 3) {
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 13);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 13);
                     tempSpeed = 3;
                 }
 
                 if ((currentTime == 4) || (currentTime == 5) || (currentTime == 6)){
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 9);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 9);
                     tempSpeed = 4;
                 }
 
                 if (currentTime == 7) {
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 9);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 9);
                     tempSpeed = 5;
                 }
 
                 if (currentTime == 8) {
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 9);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 9);
                     tempSpeed = 6;
                 }
 
                 if (currentTime == 9) {
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 9);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 9);
                     tempSpeed = 7;
                 }
 
                 if (currentTime == 10 || currentTime == 11) {
-                    clearInterval(moveItemsRepeat);
-                    moveItemsRepeat = setInterval(moveItems, 9);
+                    clearInterval(lvl1moveItemsRepeat);
+                    lvl1moveItemsRepeat = setInterval(lvl1moveItems, 9);
                     tempSpeed = 8;
                 }
                 
                 setTimeout(function(){
                     if (pow2Good == true){
                     if (tempSpeed == 1) {
-                        clearInterval(moveItemsRepeat);
-                        moveItemsRepeat = setInterval(moveItems, 10); 
+                        clearInterval(lvl1moveItemsRepeat);
+                        lvl1moveItemsRepeat = setInterval(lvl1moveItems, 10); 
                     }
         
                     if (tempSpeed == 2) {
-                        clearInterval(moveItemsRepeat);
-                        moveItemsRepeat = setInterval(moveItems, 9); 
+                        clearInterval(lvl1moveItemsRepeat);
+                        lvl1moveItemsRepeat = setInterval(lvl1moveItems, 9); 
                     }
         
                     if (tempSpeed == 3) {
                         
-                        clearInterval(moveItemsRepeat);
-                        moveItemsRepeat = setInterval(moveItems, 7); 
+                        clearInterval(lvl1moveItemsRepeat);
+                        lvl1moveItemsRepeat = setInterval(lvl1moveItems, 7); 
                     }
         
                     if (tempSpeed == 4) {
                         
-                        clearInterval(moveItemsRepeat);
-                        moveItemsRepeat = setInterval(moveItems, 5); 
+                        clearInterval(lvl1moveItemsRepeat);
+                        lvl1moveItemsRepeat = setInterval(lvl1moveItems, 5); 
                     }
         
 
                     if (tempSpeed == 5) {
                         
-                        clearInterval(moveItemsRepeat);
-                        moveItemsRepeat = setInterval(moveItems, 4);
+                        clearInterval(lvl1moveItemsRepeat);
+                        lvl1moveItemsRepeat = setInterval(lvl1moveItems, 4);
                     }
         
                     if (tempSpeed == 6) {
                         
-                        clearInterval(moveItemsRepeat);
-                        moveItemsRepeat = setInterval(moveItems, 3);
+                        clearInterval(lvl1moveItemsRepeat);
+                        lvl1moveItemsRepeat = setInterval(lvl1moveItems, 3);
                     }
         
                     if (tempSpeed == 7) {
                         
-                        clearInterval(moveItemsRepeat);
-                        moveItemsRepeat = setInterval(moveItems, 2);
+                        clearInterval(lvl1moveItemsRepeat);
+                        lvl1moveItemsRepeat = setInterval(lvl1moveItems, 2);
                     }
                     if (tempSpeed == 8) {
                         
-                        clearInterval(moveItemsRepeat);
-                        moveItemsRepeat = setInterval(moveItems, 1);
+                        clearInterval(lvl1moveItemsRepeat);
+                        lvl1moveItemsRepeat = setInterval(lvl1moveItems, 1);
                     }
-                    generationRepeat = setInterval(lvlOneGeneration, 1000);
+                    lvl1generationRepeat = setInterval(lvl1Generation, 1000);
                     counter = tempCounterr;
                     document.getElementById("mainWrapper").style.backgroundImage = "none";
                     document.querySelector(".power2.power-icon").remove();
@@ -1020,67 +1019,6 @@ function testViewport(){
 
         }
     
-    
-    
-    // REMOVE POWERS
-    function removePowers() {
-        // POWER ONE REMOVAL
-
-        var power1Current = document.querySelectorAll('.power1.power-icon');
-
-        if (power1Current.length >= 1) { 
-
-        document.getElementById("mainContainer").removeEventListener("mousedown", function(evt) {
-            powerOneToggle = true;
-        });
-        document.getElementById("mainContainer").removeEventListener("mouseup", function(evt) {
-            powerOneToggle = false;
-        });
-        
-        powerOneToggle = false;
-        power1On = 0;
-        onlyOne = 1;
-        document.querySelector(".power1.power-icon").remove();
-
-        // POWER 2
-        
-    }
-
-    var power2Current = document.querySelectorAll(".power2.power-icon");
-    pow2Good = false;
-
-    if (power2Current.length >= 1){
-
-        
-            clearInterval(moveItemsRepeat);
-            
-        
-        
-        document.getElementById("mainWrapper").style.backgroundImage = "none";
-        
-        power2Current[0].remove();
-        window.removeEventListener("keydown", power2Function);
-    }
-    }
-
-    function resetVariables() {
-        onlyOne = 1;
-        onlyOne1 = 1;
-        score = 0;
-    }
-
-
-    
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -1099,7 +1037,7 @@ function bombClicked(evt) {
     this.classList.remove("unclicked");
     this.style.zIndex = "1";
     var audio = new Audio('sounds/bomb_explosion.mp3');
-    audio.volume = 0.4;
+    audio.volume = 0.6;
     audio.playbackRate = 1.1;
     audio.play();
     var targetElementTemp = this.querySelectorAll(".thing-one");
@@ -1242,7 +1180,7 @@ function redPotionEffect(evt) {
     } else {
         this.style.zIndex = "1";
         var audio = new Audio('sounds/glass_break.mp3');
-        audio.volume = 0.2;
+        audio.volume = 0.4;
         audio.playbackRate = 1;
         audio.play();
         targetElement.style.background = "url('img/red_splash_sprite.png')" ;
@@ -1269,7 +1207,7 @@ function redPotionEffect(evt) {
         document.getElementById("score").innerHTML = score;
         this.style.zIndex = "1";
         var audio = new Audio('sounds/lvl1/heart_orb.mp3');
-        audio.volume = 0.2;
+        audio.volume = 0.5;
         audio.playbackRate = 1;
         audio.play();
         targetElement.style.height = "8vw";
@@ -1299,7 +1237,7 @@ function redPotionEffect(evt) {
         document.getElementById("score").innerHTML = score;
         this.style.zIndex = "1";
         var audio = new Audio('sounds/blue_crystal_explosion.mp3');
-        audio.volume = 0.1;
+        audio.volume = 0.3;
         audio.playbackRate = 1;
         audio.play();
         targetElement.style.height = "8vw";
@@ -1327,7 +1265,7 @@ function snowflakeEffect(evt) {
         document.getElementById("score").innerHTML = score;
         this.style.zIndex = "1";
         var audio = new Audio('sounds/lvl1/ice_break.mp3');
-        audio.volume = 0.2;
+        audio.volume = 0.3;
         audio.playbackRate = 1;
         audio.play();
         targetElement.style.height = "5.6vw";
@@ -1345,11 +1283,11 @@ function snowflakeEffect(evt) {
 
          // MAKE ICON CLICKABLE
 
-         document.getElementById("power2Icon").addEventListener("click", power2Function);
+         document.getElementById("power2Icon").addEventListener("click", lvl1power2Function);
 
         // POWERRR 2
 
-        window.addEventListener("keydown", power2Function);
+        window.addEventListener("keydown", lvl1power2Function);
 
 
         setTimeout(() => {
@@ -1380,8 +1318,8 @@ function purplePotionEffect(evt) {
     var hearts = document.querySelectorAll(".heart-img");
     if (heartLost == 0){
         hearts[0].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-        hearts[0].style.animation = "heart_explosion 300ms steps(16)";
-        hearts[0].style.backgroundSize = "1600% 100%";
+        hearts[0].style.animation = "heart_explosion 300ms steps(22)";
+        hearts[0].style.backgroundSize = "2200% 100%";
         setTimeout(function(){
             hearts[0].style.animation = "";
             hearts[0].style.backgroundImage = "url('img/heart1.png')";
@@ -1389,8 +1327,8 @@ function purplePotionEffect(evt) {
         }, 290);
     } else if (heartLost == 1){
         hearts[1].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-        hearts[1].style.backgroundSize = "1600% 100%";
-        hearts[1].style.animation = "heart_explosion 300ms steps(16)";
+        hearts[1].style.backgroundSize = "2200% 100%";
+        hearts[1].style.animation = "heart_explosion 300ms steps(22)";
         setTimeout(function(){
             hearts[1].style.animation = "";
             hearts[1].style.backgroundImage = "url('img/heart1.png')";
@@ -1398,8 +1336,8 @@ function purplePotionEffect(evt) {
         }, 290);
     }else if (heartLost == 2){
         hearts[2].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-        hearts[2].style.backgroundSize = "1600% 100%";
-        hearts[2].style.animation = "heart_explosion 300ms steps(16)";
+        hearts[2].style.backgroundSize = "2200% 100%";
+        hearts[2].style.animation = "heart_explosion 300ms steps(22)";
         setTimeout(function(){
             hearts[2].style.animation = "";
             hearts[2].style.backgroundImage = "url('img/heart1.png')";
@@ -1407,8 +1345,8 @@ function purplePotionEffect(evt) {
         }, 290);
     }else if (heartLost == 3){
         hearts[3].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-        hearts[3].style.backgroundSize = "1600% 100%";
-        hearts[3].style.animation = "heart_explosion 300ms steps(16)";
+        hearts[3].style.backgroundSize = "2200% 100%";
+        hearts[3].style.animation = "heart_explosion 300ms steps(22)";
         setTimeout(function(){
             hearts[3].style.animation = "";
             hearts[3].style.backgroundImage = "url('img/heart1.png')";
@@ -1416,8 +1354,8 @@ function purplePotionEffect(evt) {
         }, 290);
     }else if (heartLost == 4){
         hearts[4].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-        hearts[4].style.backgroundSize = "1600% 100%";
-        hearts[4].style.animation = "heart_explosion 300ms steps(16)";
+        hearts[4].style.backgroundSize = "2200% 100%";
+        hearts[4].style.animation = "heart_explosion 300ms steps(22)";
         setTimeout(function(){
             hearts[4].style.animation = "";
             hearts[4].style.backgroundImage = "url('img/heart1.png')";
@@ -1425,8 +1363,8 @@ function purplePotionEffect(evt) {
         }, 290);
     }else if (heartLost == 5){
         hearts[5].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-        hearts[5].style.backgroundSize = "1600% 100%";
-        hearts[5].style.animation = "heart_explosion 300ms steps(16)";
+        hearts[5].style.backgroundSize = "2200% 100%";
+        hearts[5].style.animation = "heart_explosion 300ms steps(22)";
         setTimeout(function(){
             hearts[5].style.animation = "";
             hearts[5].style.backgroundImage = "url('img/heart1.png')";
@@ -1434,8 +1372,8 @@ function purplePotionEffect(evt) {
         }, 290);
     }else if (heartLost == 6){
         hearts[6].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-        hearts[6].style.backgroundSize = "1600% 100%";
-        hearts[6].style.animation = "heart_explosion 300ms steps(16)";
+        hearts[6].style.backgroundSize = "2200% 100%";
+        hearts[6].style.animation = "heart_explosion 300ms steps(22)";
         setTimeout(function(){
             hearts[6].style.animation = "";
             hearts[6].style.backgroundImage = "url('img/heart1.png')";
@@ -1443,8 +1381,8 @@ function purplePotionEffect(evt) {
         }, 290);
     }else if (heartLost == 7){
         hearts[7].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-        hearts[7].style.backgroundSize = "1600% 100%";
-        hearts[7].style.animation = "heart_explosion 300ms steps(16)";
+        hearts[7].style.backgroundSize = "2200% 100%";
+        hearts[7].style.animation = "heart_explosion 300ms steps(22)";
         setTimeout(function(){
             hearts[7].style.animation = "";
             hearts[7].style.backgroundImage = "url('img/heart1.png')";
@@ -1452,8 +1390,8 @@ function purplePotionEffect(evt) {
         }, 290);
     }else if (heartLost == 8){
         hearts[8].style.backgroundImage = "url('img/heart_explosion_sprite.png')";
-        hearts[8].style.backgroundSize = "1600% 100%";
-        hearts[8].style.animation = "heart_explosion 300ms steps(16)";
+        hearts[8].style.backgroundSize = "2200% 100%";
+        hearts[8].style.animation = "heart_explosion 300ms steps(22)";
         setTimeout(function(){
             hearts[8].style.animation = "";
             hearts[8].style.backgroundImage = "url('img/heart1.png')";
@@ -1463,7 +1401,7 @@ function purplePotionEffect(evt) {
                     hearts[heartLost].classList.add("heart-gone");
                     hearts[heartLost].classList.remove("heart-here");
                 var audio = new Audio('sounds/lose_heart.mp3');
-                audio.volume = 0.2;
+                audio.volume = 0.5;
                 audio.playbackRate = 1;
                 audio.play();
 
