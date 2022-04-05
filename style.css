@@ -43,7 +43,7 @@ body {
 
 .preload {
     z-index: 0;
-    opacity: 0.02;
+    opacity: 0.05;
 }
 
 .preload-screen {
