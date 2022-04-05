@@ -321,8 +321,7 @@ function restart() {
        localStorage.setItem("FSlvl2HS", score);
        localStorage.saveServer
    }
-}
-   document.getElementById("lvl2Highscore").textContent = localStorage.getItem("FSlvl2HS");    
+}  
    document.getElementById("lvl1Highscore").textContent = localStorage.getItem("FSlvl1HS");
 
     

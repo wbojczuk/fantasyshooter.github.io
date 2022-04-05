@@ -671,6 +671,18 @@ function lvl1testViewport(){
         
 
     }
+
+    var allPurplePotions = document.querySelectorAll(".purple-potion");
+    var allPurplePotionsLength  = allPurplePotions.length;
+
+    for ( var i = 0; i < allPurplePotionsLength; i++) {
+        if (isInViewport(allPurplePotions[i]) == false) {
+            score += 15;
+            document.getElementById("score").textContent = score;
+            allPurplePotions[i].remove();
+        }
+    }
+
     var viewTest = document.getElementById("mainContainer");
     var viewSubject = viewTest.lastElementChild;
 
